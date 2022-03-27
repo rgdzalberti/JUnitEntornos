@@ -1,27 +1,21 @@
 import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertAll
+import kotlin.test.assertContains
+import kotlin.test.assertTrue
 
 class testFuncionesNumericas {
 
     val listaEnteros = listOf<Int>(1,2,3,4,5,6)
     var funcionesNumericas = FuncionesNumericas(listaEnteros)
 
-    @org.junit.Test
-    fun esMayorQue50(): Boolean {
-       return funcionesNumericas.sumar() > 50
+    @Test
+    fun paqueton(){
+        assertAll(
+            { assertTrue (funcionesNumericas.sumar() > 50 ,"No es más que 50" ) },
+            {assertTrue (funcionesNumericas.sumar() != null ,"Es nulo" )},
+            {assertContains(funcionesNumericas.listaEnteros,10,"No es 10")},
+            { kotlin.test.assertTrue(funcionesNumericas.sumar() == 5, "No es igual a 5") }
+        )
     }
 
-    @Test
-    fun numeroIguala10(): Boolean {
-        return listaEnteros.any {it == 10}
-    }
-
-    @Test
-    fun sumaNoEsNulo(): Boolean {
-        return funcionesNumericas.sumar() != null
-    }
-
-    @Test
-    fun noEsIgualA5(): Boolean {
-        return funcionesNumericas.numeroMenor() != 5
-    }
 }
